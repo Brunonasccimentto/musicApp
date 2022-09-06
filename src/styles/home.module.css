@@ -1,0 +1,242 @@
+
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.search{
+    padding: 15px;
+    width: 500px;
+    backdrop-filter: blur(5px) saturate(200%);
+    background-color: rgba(255, 255, 255, 0.78);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.125); 
+    color: #222;
+}
+
+.iconSearch{
+    height: 20px;
+    width: 20px;
+    margin-left: 35px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.container{
+
+    height: 100%;
+    box-sizing: border-box;
+    width: 80vw;;
+    margin: auto;
+}
+
+.result{
+    display: flex;
+    height: 350px;
+    background-color: rgba(22, 22, 22, 0.616);
+    backdrop-filter: blur(30px) saturate(300%);
+    -webkit-backdrop-filter: blur(7px) saturate(200%);
+    opacity: 0.8;
+    justify-content: start;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.bestResult{
+    width: 500px;
+}
+
+.bestResult h2{
+    margin-left: 40px;
+}
+
+.musics{
+    width: 1050px;
+    height: 350px;
+}
+
+.musicsListContent{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.bestResultContainer{
+    background-color: rgba(179, 179, 179, 0);
+    backdrop-filter: blur(7px) saturate(200%);
+    -webkit-backdrop-filter: blur(7px) saturate(200%);
+    width: 80%;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: flex-end;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.bestResultContainer figure span{
+    margin-left: 15px
+}
+
+.bestResultContainer figure figcaption{
+    
+    margin-left: 15px;
+}
+
+.bestResultContainer:hover{
+    filter: brightness(1.3);
+    box-shadow: 2px 2px 25px #693699;
+}
+
+.bestResult .active {
+    filter: brightness(1.3);
+    box-shadow: 2px 2px 25px #693699;
+}
+
+.bestResult li:hover .btnToggle{
+    display: block;
+    width: 50px;
+    height: 50px;
+    color: #8a2be2;
+    filter: brightness(1.5);
+    box-shadow: 2px 2px 15px #693699;
+    border-radius: 50%;
+}
+
+.bestResult .active .btnToggle{
+    display: block;
+    width: 50px;
+    height: 50px;
+    color: #8a2be2;
+    filter: brightness(1.5);
+    box-shadow: 2px 2px 15px #693699;
+    border-radius: 50%;
+}
+
+.img{
+    border-radius: 50%;
+}
+
+.musicsList{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style: none;
+    height: 80%;
+}
+
+.musicsList li:hover{
+    filter: brightness(1.3);
+    box-shadow: 2px 2px 25px #693699;
+}
+
+.musicsList .active{
+    filter: brightness(1.3);
+    box-shadow: 2px 2px 25px #693699;
+}
+
+.musicsList li{
+    padding: 10px;
+    background-color: rgba(179, 179, 179, 0);
+    backdrop-filter: blur(7px) saturate(200%);
+    -webkit-backdrop-filter: blur(7px) saturate(200%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.musicsList li img{
+    width: 40px;
+    
+}
+
+.musicsListContent{
+    display: flex;
+    margin-left: 10px;
+}
+
+.musicSpan{
+    display: flex;
+    flex-direction: column;
+}
+
+.musicSpan span{
+    margin-left: 10px;
+}
+
+.artistName{
+    font-size: 12px;
+    text-decoration:underline;
+    cursor: pointer;
+}
+
+audio{
+    display: none;
+}
+
+.btnToggle{
+    display: none;
+}
+
+.musicsList li:hover .btnToggle{
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: #8a2be2;
+    filter: brightness(1.5);
+    box-shadow: 2px 2px 15px #693699;
+    border-radius: 50%;
+}
+
+.musicsList .active .btnToggle{
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: #8a2be2;
+    filter: brightness(1.5);
+    box-shadow: 2px 2px 10px #693699;
+    border-radius: 50%;
+}
+
+.album{
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.spanNames{
+    display: flex;
+    flex-direction: row;
+}
+
+figure .album{
+    font-size: 12px;
+}
+
+.albuns h2{
+    margin-left: 65px;
+}
+
+.listAlbum{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 95%;
+    margin: auto;
+    
+
+}
+
+.liAlbum{
+    padding: 15px;
+    margin: 20px;
+    background-color: #222;
+}

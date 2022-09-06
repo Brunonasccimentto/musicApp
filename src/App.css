@@ -1,0 +1,19 @@
+.home, .biblioteca , .login, .album {
+    width: 100%;
+    background-color: #121212;
+    color: white;
+}
+
+.home{
+    background: url(./images/bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App{
+    display: flex;
+    flex-direction: row;
+}
