@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/musicApp/static/css/main.2d9decb7.css",
+    "main.js": "/musicApp/static/js/main.73235eb2.js",
+    "static/js/787.5d86c2a1.chunk.js": "/musicApp/static/js/787.5d86c2a1.chunk.js",
+    "static/media/nuzzer.png": "/musicApp/static/media/nuzzer.246e9599810aa5522093.png",
+    "static/media/bg2.jpg": "/musicApp/static/media/bg2.2d4d0f0a0f1386f12a3c.jpg",
+    "index.html": "/musicApp/index.html",
+    "main.2d9decb7.css.map": "/musicApp/static/css/main.2d9decb7.css.map",
+    "main.73235eb2.js.map": "/musicApp/static/js/main.73235eb2.js.map",
+    "787.5d86c2a1.chunk.js.map": "/musicApp/static/js/787.5d86c2a1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d9decb7.css",
+    "static/js/main.73235eb2.js"
+  ]
+}
