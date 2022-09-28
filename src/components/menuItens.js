@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import style from "../styles/header.module.css"
-import { FiLogIn, FiHome, FiList} from "react-icons/fi"
+import { FiLogIn, FiHome, FiList, FiUser} from "react-icons/fi"
 import React, { useState } from "react"
 import Logo from "./logo"
 
-function Menu({itens}){
+function Menu({itens, user}){
 
     const [switchToggle, setswitchToggle] = useState(false)
 
@@ -25,6 +25,16 @@ function Menu({itens}){
 
     let current = e.currentTarget.classList.toggle(`${style.active}`)
     
+    }
+
+    const Navigate = useNavigate()
+
+    function logOut(){
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
+        localStorage.removeItem("artist")
+        Navigate("/")
+        window.location.reload(true)
     }
 
     return(
@@ -56,13 +66,19 @@ function Menu({itens}){
                         </Link>
                     </li>
 
+                    {user ? 
+                    <li className={style.drop}>
+                        
+                        <div className={style.links}>         
+                            <span><FiUser className={style.icons} />  </span>
+                            <span className={style.item}> {user} </span>
+                            <p className={style.logOut} onClick={logOut}> <span> Sair da conta  </span> </p>   
+                        </div>   
+                    </li>
+                    : ""}
+
                 </ul>
-
-            
-           
-
-           
-                
+  
         </div>
 
         

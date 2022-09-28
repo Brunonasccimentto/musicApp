@@ -1,10 +1,22 @@
-
+body::-webkit-scrollbar {
+    width: 10px;               
+}
+  
+body::-webkit-scrollbar-track {
+    background: #222;        
+}
+  
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(0deg, #8a2be2 0%, #693699 25%, #151f42 50%);
+    border-radius: 20px;       
+    border: 1px solid rgba(255, 255, 255, 0.301); 
+}
 
 .content{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .search{
@@ -20,17 +32,17 @@
 .iconSearch{
     height: 20px;
     width: 20px;
-    margin-left: 35px;
     color: #fff;
-    cursor: pointer;
+    margin-right: 5px;
 }
 
 .container{
 
     height: 100%;
     box-sizing: border-box;
-    width: 80vw;;
+    width: 1350px;
     margin: auto;
+    margin-top: 50px;
 }
 
 .result{
@@ -39,8 +51,7 @@
     background-color: rgba(22, 22, 22, 0.616);
     backdrop-filter: blur(30px) saturate(300%);
     -webkit-backdrop-filter: blur(7px) saturate(200%);
-    opacity: 0.8;
-    justify-content: start;
+    justify-content: flex-start;
     color: #fff;
     padding: 15px;
     border-radius: 10px;
@@ -205,6 +216,23 @@ audio{
     border-radius: 50%;
 }
 
+.like{
+    display: none;
+}
+
+.musicsList li:hover .like{
+    display: block;
+    margin-right: 15px;
+}
+
+.albumList{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+
 .album{
     cursor: pointer;
     text-decoration: underline;
@@ -224,6 +252,28 @@ figure .album{
     margin-left: 65px;
 }
 
+.albuns{
+    padding: 10px;
+    margin-top: 20px;
+    height: 250px; 
+    overflow: auto;
+}
+ .albuns::-webkit-scrollbar {
+     width: 6px;
+ }
+ 
+ .albuns::-webkit-scrollbar-track {
+    background-color: rgba(29, 29, 29, 0.616);
+    border-radius: 10px;
+    
+ }
+ 
+ .albuns::-webkit-scrollbar-thumb {
+    background-color:#8a2be2;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.301); 
+ }
+
 .listAlbum{
     list-style: none;
     display: flex;
@@ -231,12 +281,79 @@ figure .album{
     flex-wrap: wrap;
     width: 95%;
     margin: auto;
-    
+}
 
+
+.listAlbum li{
+    margin-left: 50px;
+    width: 250px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(179, 179, 179, 0);
+    backdrop-filter: blur(5px) saturate(140%);
+    -webkit-backdrop-filter: blur(7px) saturate(200%);
+}
+
+.listAlbum img{
+    border-radius: 50px;
+}
+
+.listAlbum .album{
+    display: none;
+}
+
+.listAlbum li:hover .btnToggle{
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: #892be2a1;
+    filter: brightness(1.5);
+    box-shadow: 2px 2px 10px #693699;
+    border-radius: 50%;
+}
+
+.listAlbum .active .btnToggle{
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: #892be2a1;
+    filter: brightness(1.5);
+    box-shadow: 2px 2px 10px #693699;
+    border-radius: 50%;
+}
+
+.listAlbum li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.listAlbum li:hover{
+    filter: brightness(1.3);
+    box-shadow: 2px 2px 25px #693699;
+}
+
+.listAlbum .active{
+    filter: brightness(1.3);
+    box-shadow: 2px 2px 25px #693699;
 }
 
 .liAlbum{
     padding: 15px;
     margin: 20px;
     background-color: #222;
+}
+
+.denied{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    flex-direction: column;
+    margin-top: 20vh;
+}
+
+.denied span{
+    text-decoration: underline;
 }

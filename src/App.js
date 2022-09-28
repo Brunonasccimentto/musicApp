@@ -1,36 +1,62 @@
 import './App.css';
-import {BrowserRouter as Router, Routes, Route, link} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Header from './components/header';
-import Logo from './components/logo';
-import Home from './pages/home';
 import Biblioteca from './pages/biblioteca';
 import Login from './pages/login';
-import Album from './pages/album';
-import { Provider } from 'react-redux';
-import albumReducer from './components/albumreducer';
-import { applyMiddleware, legacy_createStore as createStore } from 'redux';
-import thunk from "redux-thunk"
-import Find from './components/search';
+import Footer from './components/footer';
+import Register from './pages/register';
+import { useState, useEffect } from 'react';
+import Container from './components/container';
+import Artist from './pages/artist';
 
 function App() {
 
-  const store = createStore(albumReducer, applyMiddleware(thunk))
+  const [music, setMusic] = useState()
+  const [player, setPlayer] = useState()
+  const [user, setUser] = useState("")
+  const [hash, setHash ] = useState(false)
+
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            
+           setHash(true)
+           let current = localStorage.getItem("user")
+           setUser(current)
+           
+        }    
+    }, [])
+  
+  function ActiveMusic(e){
+
+    let currentMusic = e.target.parentElement.offsetParent.children[0].children[1].children[0].innerText
+    setMusic(currentMusic)
+
+    let currentPlayer = e.target.parentElement.parentElement.children[1].currentSrc
+}
 
   return (
     <div className="App">
-    <Provider store={store}>
+    
       <Router>
-      <Header itens={["Home", "Biblioteca" , "Login"]}></Header>
+        <div className='App-container'>
+      <Header itens={["Home", "Biblioteca" , "Login"]} user={user}></Header>
       
-        <Routes>
-          <Route path='/*' element={<Home/>}/> 
-          <Route path='/album' element={<Album/>}/>
-          <Route path='/biblioteca' element={<Biblioteca/>}/> 
-          <Route path='/login' element={<Login/>}/> 
-        </Routes>
+        
+          <Routes>
+            <Route path='/*' element={<Container ActiveMusic={ActiveMusic} hash={hash}/>} />         
+            <Route path='/biblioteca' element={<Biblioteca/>}/> 
+            <Route path='/register' element={<Register/>}/>
+            <Route path='/login' element={<Login/>}/> 
+            <Route path='/artist' element={<Artist/>}/>
+          </Routes>
+        
+      
+
+        </div>
+        <Footer music={music} player={player}/>
       
       </Router>
-    </Provider>
+    
       
 
     </div>

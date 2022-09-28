@@ -1,4 +1,4 @@
-.home, .biblioteca , .login, .album {
+.home, .biblioteca, .login, .artist{
     width: 100%;
     background-color: #121212;
     color: white;
@@ -13,7 +13,27 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.App{
+.login{
+    background: url(./images/bg-login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artist{
+    background: url(./images/bg-artist.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.App-container{
     display: flex;
     flex-direction: row;
 }

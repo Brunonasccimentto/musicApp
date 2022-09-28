@@ -1,0 +1,15 @@
+
+.footer{
+    padding: 0;
+    margin: 0;
+    background-color: #222;
+    padding: 20px;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer audio{
+    display: block;
+}
