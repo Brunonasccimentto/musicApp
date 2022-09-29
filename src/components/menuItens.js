@@ -46,7 +46,7 @@ function Menu({itens, user}){
                 <ul>
                     
                     <li className={`${Active ? style.active : ""}, ${style.active}`} onClick={toggleActive}>
-                        <Link to={"/*"} className={style.links} >  
+                        <Link to={"/musicApp"} className={style.links} >  
                             <span> <FiHome className={style.icons} /> </span>
                             <span className={style.item}> {itens[0]}  </span>
                         </Link>

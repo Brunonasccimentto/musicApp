@@ -21,7 +21,7 @@ export default function Formlogin(){
             localStorage.setItem("user", JSON.parse(response.config.data).email)
             let token = localStorage.setItem("token", response.data)
             setAuthToken(token)
-            Navigate("/*")
+            Navigate("/musicApp")
             window.location.reload(true)
         }} catch(err){
             setInvalid(err.response.data)
