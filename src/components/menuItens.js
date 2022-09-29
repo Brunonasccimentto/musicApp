@@ -33,7 +33,7 @@ function Menu({itens, user}){
         localStorage.removeItem("user")
         localStorage.removeItem("token")
         localStorage.removeItem("artist")
-        Navigate("/")
+        Navigate("/musicApp")
         window.location.reload(true)
     }
 
