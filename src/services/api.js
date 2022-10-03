@@ -1,8 +1,7 @@
 import axios from "axios"
 
 export const api = axios.create({
-    // baseURL: "https://nodejs-express-login.herokuapp.com/",
-    baseURL: "http://localhost:3001",
+    baseURL: "https://nodejs-express-login.herokuapp.com/",
 })
 
 export const createUser = async (name, email, password)=>{
