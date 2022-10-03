@@ -83,22 +83,32 @@ body::-webkit-scrollbar-thumb {
     -webkit-backdrop-filter: blur(7px) saturate(200%);
     width: 80%;
     display: flex;
+    flex-direction: column;
     margin: auto;
     padding: 10px;
     border-radius: 10px;
-    align-items: flex-end;
-    justify-content: space-between;
+    align-items: flex-start;
     list-style: none;
 }
 
-.bestResultContainer figure span{
-    margin-left: 15px
+.flow{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 20px;
 }
 
-.bestResultContainer figure figcaption{
-    
-    margin-left: 15px;
+.flow .like{
+    margin-left: 100px;
+    height: 50px;
 }
+/* 
+.btns{
+    display: flex;
+    justify-content: flex-end;
+    width: 190px;
+} */
 
 .bestResultContainer:hover{
     filter: brightness(1.3);
@@ -128,6 +138,13 @@ body::-webkit-scrollbar-thumb {
     filter: brightness(1.5);
     box-shadow: 2px 2px 15px #693699;
     border-radius: 50%;
+    
+}
+
+.bestResult .active .like{
+    display: block;
+    margin-left: 100px;
+    margin-right: 15px;
 }
 
 .img{
@@ -218,11 +235,19 @@ audio{
 
 .like{
     display: none;
+    color: #8a2be2;
+    filter: brightness(200%);
 }
 
 .musicsList li:hover .like{
     display: block;
     margin-right: 15px;
+}
+
+.bestResult li:hover .like{
+    display: block;
+    margin-right: 15px;
+    height: 50px;
 }
 
 .albumList{
@@ -249,7 +274,12 @@ figure .album{
 }
 
 .albuns h2{
-    margin-left: 65px;
+    margin-left: 40px;
+}
+
+.albuns .info{
+    margin-left: 40px;
+    font-style: italic;
 }
 
 .albuns{
@@ -274,23 +304,26 @@ figure .album{
     border: 1px solid rgba(255, 255, 255, 0.301); 
  }
 
+ .albumHeader{
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+ }
+
 .listAlbum{
     list-style: none;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 95%;
-    margin: auto;
 }
 
 
 .listAlbum li{
-    margin-left: 50px;
-    width: 250px;
-    margin-top: 20px;
+    width: 100%;
+    margin-top: 5px;
     padding: 10px;
     border-radius: 15px;
-    background-color: rgba(179, 179, 179, 0);
+    background-color:  #121625;
     backdrop-filter: blur(5px) saturate(140%);
     -webkit-backdrop-filter: blur(7px) saturate(200%);
 }
@@ -339,12 +372,6 @@ figure .album{
     box-shadow: 2px 2px 25px #693699;
 }
 
-.liAlbum{
-    padding: 15px;
-    margin: 20px;
-    background-color: #222;
-}
-
 .denied{
     display: flex;
     justify-content: center;
@@ -352,8 +379,41 @@ figure .album{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     flex-direction: column;
     margin-top: 20vh;
+
+    -webkit-animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .denied span{
     text-decoration: underline;
 }
+@-webkit-keyframes focus-in-expand {
+    0% {
+      letter-spacing: -1em;
+      -webkit-filter: blur(20px);
+              filter: blur(20px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  @keyframes focus-in-expand {
+    0% {
+      letter-spacing: -1em;
+      -webkit-filter: blur(20px);
+              filter: blur(20px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+}
+
+  
+  
+

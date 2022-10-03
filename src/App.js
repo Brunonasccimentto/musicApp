@@ -32,6 +32,7 @@ function App() {
     setMusic(currentMusic)
 
     let currentPlayer = e.target.parentElement.parentElement.children[1].currentSrc
+    setPlayer(currentPlayer)
 }
 
   return (

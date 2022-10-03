@@ -72,7 +72,7 @@ function Menu({itens, user}){
                         <div className={style.links}>         
                             <span><FiUser className={style.icons} />  </span>
                             <span className={style.item}> {user} </span>
-                            <p className={style.logOut} onClick={logOut}> <span> Sair da conta  </span> </p>   
+                            <span className={style.logOut} onClick={logOut}> Sair da conta </span>   
                         </div>   
                     </li>
                     : ""}

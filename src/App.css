@@ -32,6 +32,16 @@
     align-items: center;
 }
 
+.biblioteca{
+    background:url(./images/bg-biblioteca.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
 
 .App-container{
     display: flex;

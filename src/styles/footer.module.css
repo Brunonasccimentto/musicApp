@@ -1,15 +1,36 @@
 
-.footer{
+/* .footer{
     padding: 0;
     margin: 0;
     background-color: #222;
     padding: 20px;
     height: 5vh;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
+    color: rgb(182, 182, 182);
 }
 
-.footer audio{
-    display: block;
+.content{
+    display: flex;
+    width: 10%;
+    justify-content: space-between;
+    background-color: #222;
 }
+
+.name{
+    color: #fff;
+
+}
+
+.btnToggle{
+    width: 30px;
+    height: 30px;
+}
+
+.like{
+    width: 30px;
+    height: 30px;
+    color: #8a2be2;
+} */

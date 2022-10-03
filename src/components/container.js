@@ -6,20 +6,23 @@ import Find from "./search"
 import BestResult from "./bestResult"
 import { Link, useNavigate } from "react-router-dom"
 import logoNuzzer from "../images/logo.png"
+import {addMusic, deleteMusic} from "../services/api"
 
     
 function Container({ActiveMusic, player, hash}){
 
     const [img, setImg] = useState()
-    const [name, setName] = useState()
+    const [title, setTitle] = useState()
     const [preview, setPreview] = useState()
     const [artist, setArtist] = useState()
     const [album, setAlbum] = useState()
+    const [list, setList] = useState()
 
     const [musicAlbum, setmusicAlbum] = useState()
     const [albumName, setAlbumName] = useState()
-    const [list, setList] = useState()
-    const [like, setLike] = useState([])
+    const [AlbumImg, setAlbumImg] = useState()
+    const [release, setRelease] = useState()
+    const [type, setType] = useState()
 
     const navigate = useNavigate()
 
@@ -73,6 +76,48 @@ function Container({ActiveMusic, player, hash}){
 
     }
 
+    async function likeMusic(e){
+
+        let email = localStorage.getItem("user")
+        let music = e.target.parentElement.offsetParent.children[0].children[1].children[0].innerText
+
+        try {
+        const response = await addMusic(email, music)
+
+        } catch(err){
+            alert(err.response.data)
+        }
+
+        let heart = e.target.parentElement.offsetParent.children[2].children[0]
+        let heartFill = e.target.parentElement.offsetParent.children[2].children[1]
+
+        if(heart.style.display == "inline-block"){
+            heart.style.display = "none"
+            heartFill.style.display = "inline-block"
+        }
+    }
+
+    async function unLikeMusic(e){
+
+        let email = localStorage.getItem("user")
+        let music = e.target.parentElement.parentElement.offsetParent.children[0].children[1].children[0].innerText
+
+        try{
+            const response = await deleteMusic(email, music)
+
+        } catch(err){
+            alert("musica deletada")
+        }
+
+        let heart = e.target.parentElement.parentElement.offsetParent.children[2].children[0]
+        let heartFill = e.target.parentElement.parentElement.offsetParent.children[2].children[1]
+
+        if(heart.style.display == "none"){
+            heart.style.display = "inline-block"
+            heartFill.style.display = "none"
+        }
+    }
+
     const options = {
         method: 'GET',
         headers: {
@@ -89,7 +134,7 @@ function Container({ActiveMusic, player, hash}){
             .then(res => {
 
                 setImg(res.data[0].album.cover)
-                setName(res.data[0].title)
+                setTitle(res.data[0].title)
                 setArtist(res.data[0].artist.name)
                 setAlbum(res.data[0].album.title)
                 setPreview(res.data[0].preview)
@@ -115,7 +160,10 @@ function Container({ActiveMusic, player, hash}){
                          </div>
                         
                          <audio controls src={d.preview}></audio>
-                         <span onClick={ActiveMusic}> <BsHeart className={style.like}/> </span>
+                         <div>
+                            <span onClick={likeMusic} style={{ display: "inline-block" }}> <BsHeart className={style.like} /> </span>
+                            <span onClick={unLikeMusic} style={{ display: "none" }}> <BsHeartFill className={style.like}/> </span>
+                         </div>
                          <span style={{ display: "inline-block" }}>  <FiPlayCircle className={style.btnToggle} /> </span>
                          <span style={{ display: "none" }}> <FiPauseCircle className={style.btnToggle} /> </span>
                      </li>
@@ -141,8 +189,6 @@ function Container({ActiveMusic, player, hash}){
         .then(res => res.json())
         .then(res => {
 
-                console.log(e.target.innerText)
-
                 let id = res.data[0].album.id
 
                 fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, options)
@@ -156,7 +202,7 @@ function Container({ActiveMusic, player, hash}){
                         <li key={index} onClick={playAudio} className={`${Active ? style.active : ""}`}>
                         <div className={style.albumList}>
                           
-                            <img src={d.album.cover_small} ></img>
+                            
                            
                             <div className={style.musicSpan}>
                                
@@ -171,7 +217,7 @@ function Container({ActiveMusic, player, hash}){
                         
 
                         <audio controls src={d.preview}></audio>
-                        <span onClick={ActiveMusic}> <BsHeart className={style.like}/> </span>
+                        <span> <BsHeart className={style.like}/> </span>
                         <span style={{ display: "inline-block" }}>  <FiPlayCircle className={style.btnToggle} /> </span>
                         <span style={{ display: "none" }}> <FiPauseCircle className={style.btnToggle} /> </span>
                         
@@ -179,6 +225,9 @@ function Container({ActiveMusic, player, hash}){
                         
                     );
                     setmusicAlbum(listItems)
+                    setAlbumImg(res.cover)
+                    setRelease(res.release_date)
+                    setType(res.record_type)
 
                     } 
                     )
@@ -191,7 +240,6 @@ function Container({ActiveMusic, player, hash}){
 
     function artistPage(e){
         localStorage.setItem("artist", e.target.innerText)
-        console.log(e)
         navigate("/artist")
     }
 
@@ -207,7 +255,7 @@ function Container({ActiveMusic, player, hash}){
                     <div id="container" className={style.container} style={{ display: "none" }}>
                         <div className={style.result}>
 
-                            <BestResult playAudio={playAudio} Active={Active} img={img} name={name} artist={artist} albumPage={albumPage} album={album} preview={preview} audioActive={audioActive} />
+                            <BestResult playAudio={playAudio} Active={Active} img={img} title={title} artist={artist} albumPage={albumPage} album={album} preview={preview} audioActive={audioActive} />
 
                             <div className={style.musics}>
                                 <h2> Músicas </h2>
@@ -217,12 +265,19 @@ function Container({ActiveMusic, player, hash}){
                             </div>
                         </div>
 
+                        {musicAlbum ?
                         <div className={style.albuns}>
-                            <h2> {albumName} </h2>
+                            <div className={style.albumHeader}>
+                                <img src={AlbumImg}></img>
+                                <div> 
+                                    <h2> {albumName} </h2>
+                                    <span className={style.info}> {type} lançado em: {release} </span>
+                                </div>
+                            </div>
                             <ul className={style.listAlbum}>
                                 {musicAlbum}
                             </ul>
-                        </div>
+                        </div> : "" }
                     </div>
                 </div> : 
 
@@ -232,7 +287,10 @@ function Container({ActiveMusic, player, hash}){
                     Faça o login ter acesso ao Nuzzer
                 </h1>
                 <span> Cadastre-se e tenha vários benefícios </span>
-            </div>}
+                <h6> criado pro Bruno Rodrigues</h6> 
+            </div>
+                   
+                    }
 
         </div>
     )
