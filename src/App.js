@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Header from './components/header';
 import Biblioteca from './pages/biblioteca';
 import Login from './pages/login';
-import Footer from './components/footer';
 import Register from './pages/register';
 import { useState, useEffect } from 'react';
 import Container from './components/container';
@@ -50,11 +49,8 @@ function App() {
             <Route path='/login' element={<Login/>}/> 
             <Route path='/artist' element={<Artist/>}/>
           </Routes>
-        
-      
 
         </div>
-        <Footer music={music} player={player}/>
       
       </Router>
     
