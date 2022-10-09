@@ -10,8 +10,6 @@ import Artist from './pages/artist';
 
 function App() {
 
-  const [music, setMusic] = useState()
-  const [player, setPlayer] = useState()
   const [user, setUser] = useState("")
   const [hash, setHash ] = useState(false)
 
@@ -24,15 +22,6 @@ function App() {
            
         }    
     }, [])
-  
-  function ActiveMusic(e){
-
-    let currentMusic = e.target.parentElement.offsetParent.children[0].children[1].children[0].innerText
-    setMusic(currentMusic)
-
-    let currentPlayer = e.target.parentElement.parentElement.children[1].currentSrc
-    setPlayer(currentPlayer)
-}
 
   return (
     <div className="App">
@@ -43,7 +32,7 @@ function App() {
       
         
           <Routes>
-            <Route path='/*' element={<Container ActiveMusic={ActiveMusic} hash={hash}/>} />         
+            <Route path='/*' element={<Container hash={hash}/>} />         
             <Route path='/biblioteca' element={<Biblioteca/>}/> 
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/> 

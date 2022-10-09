@@ -5,8 +5,6 @@ import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { FiPlayCircle, FiPauseCircle } from "react-icons/fi"
 import { deleteMusic, addMusic } from "../services/api"
 
-
-
 export default function Biblioteca(){
 
     const [Active, setActive] = useState(false)
@@ -19,7 +17,7 @@ export default function Biblioteca(){
     useEffect(()=>{
 
         music()
-    }, [userMusic])
+    }, [music])
 
 
     const options = {
@@ -42,14 +40,17 @@ export default function Biblioteca(){
         .then(res => res.json())
         .then(res => {
 
-            setPreview(res.data[0].preview)
+            try{
+                setPreview(res.data[0].preview)
+                setuserMusic(thisMusic)
+            } catch(err){
 
-            setuserMusic(thisMusic)
+            }
+            
                
         })
         .catch(err => console.error(err));
 
-      
         try {
 
             let audioSelector = toggleIcon
@@ -69,6 +70,7 @@ export default function Biblioteca(){
                 toggleAudios.forEach(item => {
                     item.pause()
                     audioSelector.play()
+                    
                 })
 
             } else {
@@ -88,7 +90,6 @@ export default function Biblioteca(){
             item.classList.remove(`${style.active}`)
             e.currentTarget.classList.add(`${style.active}`)
         })
-
     }
 
     async function likeMusic(e){
@@ -97,55 +98,46 @@ export default function Biblioteca(){
         let music = e.target.parentElement.offsetParent.innerText
 
         try {
-        const response = await addMusic(email, music)
+            const response = await addMusic(email, music)
+            let heart = e.target.parentElement.offsetParent.children[2].children[0]
+            let heartFill = e.target.parentElement.offsetParent.children[2].children[1]
+
+            if(heart.style.display == "inline-block"){
+            heart.style.display = "none"
+            heartFill.style.display = "inline-block"
+        }
 
         } catch(err){
             alert(err.response.data)
         }
-
-        let heart = e.target.parentElement.offsetParent.children[2].children[0]
-        let heartFill = e.target.parentElement.offsetParent.children[2].children[1]
-
-        if(heart.style.display == "inline-block"){
-            heart.style.display = "none"
-            heartFill.style.display = "inline-block"
-        }
     }
 
     async function unLikeMusic(e){
-
-        console.log(e)
 
         let email = localStorage.getItem("user")
         let music = e.target.parentElement.parentElement.offsetParent.innerText
 
         try{
             const response = await deleteMusic(email, music)
+            let heart = e.target.parentElement.parentElement.offsetParent.children[2].children[0]
+            let heartFill = e.target.parentElement.parentElement.offsetParent.children[2].children[1]
+    
+            if(heart.style.display == "none"){
+                heart.style.display = "inline-block"
+                heartFill.style.display = "none"
+            }
 
         } catch(err){
-            alert("musica deletada")
+            
         }
-
-        let heart = e.target.parentElement.parentElement.offsetParent.children[2].children[0]
-        let heartFill = e.target.parentElement.parentElement.offsetParent.children[2].children[1]
-
-        if(heart.style.display == "none"){
-            heart.style.display = "inline-block"
-            heartFill.style.display = "none"
-        }
-    }
-    
+    } 
 
     async function music(){
 
-        console.log(userMusic)
-
         const email = localStorage.getItem("user")
-
         const response = await getMusic(email)
         const array = response.data
         
-
         const newData = array.map((d, index)=>
        
         <li key={index} onClick={playAudio} className={`${Active ? style.active : ""}`}>
@@ -169,7 +161,6 @@ export default function Biblioteca(){
         <span style={{ display: "inline-block" }}>  <FiPlayCircle className={style.btnToggle} /> </span>
         <span style={{ display: "none" }}> <FiPauseCircle className={style.btnToggle} /> </span>
     </li>
-        
         )
 
         setUserList(newData)
@@ -179,8 +170,9 @@ export default function Biblioteca(){
     return(
         <div className="biblioteca">
 
+            <h2> Sua biblioteca </h2>
             <div className={style.musics}>
-                <h2> Sua biblioteca </h2>
+                
                 <div className={style.musicsList}>
                     {userList}
                 </div>

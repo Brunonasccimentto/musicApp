@@ -20,6 +20,7 @@ export default function Formlogin(){
         if (response.status === 200) {
             localStorage.setItem("user", JSON.parse(response.config.data).email)
             let token = localStorage.setItem("token", response.data)
+            
             setAuthToken(token)
             Navigate("/musicApp")
             window.location.reload(true)
@@ -45,12 +46,9 @@ export default function Formlogin(){
                     <div>
                         <button type="submit" onClick={submit}>Entrar</button>
                     </div>
-                    
-                    
+                                 
             </form>
 
-                    
-            
             <Link to={"/register"} className={style.sign}><span>Sign up for free ⇨ </span></Link>
             </div>
     )

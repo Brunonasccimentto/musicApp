@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import style from "../styles/artist.module.css"
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FiPlayCircle, FiPauseCircle } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { addMusic, deleteMusic } from "../services/api";
 
 function Artist(){
 
@@ -45,8 +46,7 @@ function Artist(){
                 playSelector.style.display = "inline-block"
                 pauseSelector.style.display = "none"
             }
-          
-        
+             
         } catch(error){
             console.log()
         }
@@ -57,8 +57,50 @@ function Artist(){
             item.classList.remove(`${style.active}`)
             e.currentTarget.classList.add(`${style.active}`)
          })
-
     }
+
+    async function likeMusic(e){
+
+        let email = localStorage.getItem("user")
+        let music = e.target.parentElement.offsetParent.children[0].children[1].children[0].innerText
+
+        try {
+        const response = await addMusic(email, music)
+            alert("musica adicionado a sua biblioteca")
+        } catch(err){
+            alert(err.response.data)
+        }
+
+        let heart = e.target.parentElement.offsetParent.children[2].children[0]
+        let heartFill = e.target.parentElement.offsetParent.children[2].children[1]
+
+        if(heart.style.display == "inline-block"){
+            heart.style.display = "none"
+            heartFill.style.display = "inline-block"
+        }
+    }
+
+    async function unLikeMusic(e){
+
+        let email = localStorage.getItem("user")
+        let music = e.target.parentElement.parentElement.offsetParent.children[0].children[1].children[0].innerText
+
+        try{
+            const response = await deleteMusic(email, music)
+
+        } catch(err){
+            alert("musica deletada")
+        }
+
+        let heart = e.target.parentElement.parentElement.offsetParent.children[2].children[0]
+        let heartFill = e.target.parentElement.parentElement.offsetParent.children[2].children[1]
+
+        if(heart.style.display == "none"){
+            heart.style.display = "inline-block"
+            heartFill.style.display = "none"
+        }
+    }
+
 
     const options = {
         method: 'GET',
@@ -76,7 +118,6 @@ function Artist(){
         .then(res => res.json())
         .then(res => { 
 
-            console.log(res.data)
             const data = res.data
     
                      const list = data.map(((d, index) => 
@@ -98,7 +139,10 @@ function Artist(){
                      </div>
                     
                      <audio controls src={d.preview}></audio>
-                     <span> <BsHeart className={style.like}/> </span>
+                     <div>
+                        <span onClick={likeMusic} style={{ display: "inline-block" }}> <BsHeart className={style.like} /> </span>
+                        <span onClick={unLikeMusic} style={{ display: "none" }}> <BsHeartFill className={style.like}/> </span>
+                     </div>
                      <span style={{ display: "inline-block" }}>  <FiPlayCircle className={style.btnToggle} /> </span>
                      <span style={{ display: "none" }}> <FiPauseCircle className={style.btnToggle} /> </span>
                  </li>
@@ -135,7 +179,6 @@ function Artist(){
         <div className={`artist , ${style.content}`}>
 
             <div className={style.container}>
-
 
                 <div className={style.artist}>
                     <img src={`${photo}`}></img>

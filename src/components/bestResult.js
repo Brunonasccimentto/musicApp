@@ -3,18 +3,12 @@ import { FiPlayCircle, FiPauseCircle } from "react-icons/fi"
 import { useNavigate } from "react-router-dom"
 import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { addMusic, deleteMusic } from "../services/api"
-import { useEffect } from "react"
-
 
 export default function BestResult(props){
 
     const navigate = useNavigate()
 
-   
-
     async function likeMusic(e){
-
-        console.log(e)
 
         let email = localStorage.getItem("user")
         let music = e.target.parentElement.offsetParent.innerText
@@ -37,8 +31,6 @@ export default function BestResult(props){
 
     async function unLikeMusic(e){
 
-        console.log(e)
-
         let email = localStorage.getItem("user")
         let music = e.target.parentElement.parentElement.offsetParent.innerText
 
@@ -46,7 +38,7 @@ export default function BestResult(props){
             const response = await deleteMusic(email, music)
 
         } catch(err){
-            alert("musica deletada")
+            alert(err)
         }
 
         let heart = e.target.parentElement.parentElement.offsetParent.children[1].children[2].children[0]
@@ -84,7 +76,6 @@ export default function BestResult(props){
                     </div>
                    
                 </div>
-            
 
                     <audio controls src={props.preview} className={`${props.audioActive ? style.audioActive : ""}`}></audio>
                     <div className={style.likeBtns}>

@@ -1,15 +1,14 @@
 import style from "../styles/home.module.css"
 import { FiPlayCircle, FiPauseCircle } from "react-icons/fi"
-import { createContext, useEffect, useState} from "react"
+import { useEffect, useState} from "react"
 import {BsHeart, BsHeartFill} from "react-icons/bs"
 import Find from "./search"
 import BestResult from "./bestResult"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import logoNuzzer from "../images/logo.png"
 import {addMusic, deleteMusic} from "../services/api"
-
-    
-function Container({ActiveMusic, player, hash}){
+ 
+function Container({hash}){
 
     const [img, setImg] = useState()
     const [title, setTitle] = useState()
@@ -24,15 +23,18 @@ function Container({ActiveMusic, player, hash}){
     const [release, setRelease] = useState()
     const [type, setType] = useState()
 
+    const [Active, setActive] = useState(false)
+
     const navigate = useNavigate()
+
+    useEffect(()=>{
+
+    
+    }, [list])
 
     let toggleIcon = document.getElementsByTagName("span")
     let toggleAudios = document.querySelectorAll("audio")
 
-    const [Active, setActive] = useState(false)
-    const [audioActive, setaudioActive] = useState(false)
-
-    
     const playAudio = function (e) {
       
         try {
@@ -83,7 +85,7 @@ function Container({ActiveMusic, player, hash}){
 
         try {
         const response = await addMusic(email, music)
-
+            alert("musica adicionado a sua biblioteca")
         } catch(err){
             alert(err.response.data)
         }
@@ -202,8 +204,7 @@ function Container({ActiveMusic, player, hash}){
                         <li key={index} onClick={playAudio} className={`${Active ? style.active : ""}`}>
                         <div className={style.albumList}>
                           
-                            
-                           
+                            <span></span>
                             <div className={style.musicSpan}>
                                
                                 <span> {d.title} </span>
@@ -213,11 +214,13 @@ function Container({ActiveMusic, player, hash}){
                                     <span className={style.album}> {d.album.title} </span>
                                 </div>
                             </div>
-                            </div> 
-                        
+                            </div>   
 
                         <audio controls src={d.preview}></audio>
-                        <span> <BsHeart className={style.like}/> </span>
+                        <div>
+                            <span onClick={likeMusic} style={{ display: "inline-block" }}> <BsHeart className={style.like} /> </span>
+                            <span onClick={unLikeMusic} style={{ display: "none" }}> <BsHeartFill className={style.like}/> </span>
+                        </div>
                         <span style={{ display: "inline-block" }}>  <FiPlayCircle className={style.btnToggle} /> </span>
                         <span style={{ display: "none" }}> <FiPauseCircle className={style.btnToggle} /> </span>
                         
@@ -255,7 +258,7 @@ function Container({ActiveMusic, player, hash}){
                     <div id="container" className={style.container} style={{ display: "none" }}>
                         <div className={style.result}>
 
-                            <BestResult playAudio={playAudio} Active={Active} img={img} title={title} artist={artist} albumPage={albumPage} album={album} preview={preview} audioActive={audioActive} />
+                            <BestResult playAudio={playAudio} Active={Active} img={img} title={title} artist={artist} albumPage={albumPage} album={album} preview={preview}/>
 
                             <div className={style.musics}>
                                 <h2> Músicas </h2>

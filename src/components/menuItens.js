@@ -1,11 +1,12 @@
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import style from "../styles/header.module.css"
 import { FiLogIn, FiHome, FiList, FiUser} from "react-icons/fi"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Logo from "./logo"
 
 function Menu({itens, user}){
 
+    const [current, setCurrent] = useState("")
     const [switchToggle, setswitchToggle] = useState(false)
 
     const toggleSwitch = function (){
@@ -14,9 +15,11 @@ function Menu({itens, user}){
 
     const [Active, setActive] = useState(false)
 
+    let list = document.querySelectorAll("li")
+
     const toggleActive = function(e){
     
-    let list = document.querySelectorAll("li")
+    
 
     list.forEach(item => {
         item.classList.remove(`${style.active}`)
@@ -26,6 +29,21 @@ function Menu({itens, user}){
     let current = e.currentTarget.classList.toggle(`${style.active}`)
     
     }
+
+    // useEffect(()=>{
+    //     if(window.location.pathname == "/biblioteca"){
+
+    //         let list = document.querySelectorAll("li")
+
+    //         list.forEach(item => {
+    //         item.classList.remove(`${style.active}`)
+    //         setCurrent(`${style.active}`)
+            
+    // });
+
+    //     }
+    // }, [])
+
 
     const Navigate = useNavigate()
 
@@ -52,7 +70,7 @@ function Menu({itens, user}){
                         </Link>
                     </li>
 
-                    <li className={Active ? style.active : ""} onClick={toggleActive}> 
+                    <li className={`${Active ? style.active : ""}, ${current}`} onClick={toggleActive}> 
                         <Link to={"biblioteca"} className={style.links}>  
                             <span><FiList className={style.icons} /> </span>
                             <span className={style.item}> {itens[1]}</span> 

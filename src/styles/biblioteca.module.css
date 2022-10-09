@@ -1,9 +1,31 @@
+h2{
+    margin-top: 50px;
+}
+
 .musics{
     width: 1050px;
-    height: 100%;
+    padding: 15px;
+    height: 70%;
+    overflow: auto;
 
     -webkit-animation: slide-in-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	animation: slide-in-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.musics::-webkit-scrollbar {
+    width:8px;
+}
+
+.musics::-webkit-scrollbar-track {
+   background-color: rgba(29, 29, 29, 0.616);
+   border-radius: 10px;
+   
+}
+
+.musics::-webkit-scrollbar-thumb {
+   background-color:#8a2be2;
+   border-radius: 10px;
+   border: 1px solid rgba(255, 255, 255, 0.301); 
 }
 
 @-webkit-keyframes slide-in-top {
@@ -37,6 +59,7 @@
     align-items: center;
     flex-direction: row;
     width: 100%;
+    
 }
 
 .musicsList{
@@ -44,7 +67,6 @@
     flex-direction: column;
     justify-content: flex-start;
     list-style: none;
-    height: 80%;
 }
 
 .musicsList li:hover{
@@ -120,6 +142,11 @@ audio{
     display: none;
     color: #8a2be2;
     filter: brightness(200%);
+}
+
+.musicsList .active .like{
+    display: block;
+    margin-right: 15px;
 }
 
 .musicsList li:hover .like{

@@ -140,9 +140,16 @@ audio{
 
 .like{
     display: none;
+    color:#8a2be2;
+    filter:brightness(200%)
 }
 
 .musicsList li:hover .like{
+    display: block;
+    margin-right: 15px;
+}
+
+.musicsList .active .like{
     display: block;
     margin-right: 15px;
 }

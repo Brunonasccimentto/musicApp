@@ -18,15 +18,11 @@ export default function Formregister(){
         try{
             const response = await createUser(name, email, password)
             if(response.status === 200){
-                console.log(response)
                 Navigate("/login")
             } 
         } catch(err) {
             setInvalid(err.response.data)
         }
-                
-       
-        
     }
 
     return(
