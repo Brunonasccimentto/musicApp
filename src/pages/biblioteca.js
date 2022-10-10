@@ -170,7 +170,7 @@ export default function Biblioteca(){
     return(
         <div className="biblioteca">
 
-            <h2> Sua biblioteca </h2>
+            <h2 className={style.h2}> Sua biblioteca </h2>
             <div className={style.musics}>
                 
                 <div className={style.musicsList}>

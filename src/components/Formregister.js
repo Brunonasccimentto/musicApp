@@ -28,7 +28,7 @@ export default function Formregister(){
     return(
         <div className={style.container}>
             <Logo/>
-            <h1> Sign up </h1>
+            <h1> Cadastro </h1>
         <form action="/user/register" method="POST">
                 <div>
                     <label>Nome:</label>

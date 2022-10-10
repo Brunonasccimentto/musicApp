@@ -15,11 +15,9 @@ function Menu({itens, user}){
 
     const [Active, setActive] = useState(false)
 
-    let list = document.querySelectorAll("li")
-
     const toggleActive = function(e){
     
-    
+    let list = document.querySelectorAll("li")
 
     list.forEach(item => {
         item.classList.remove(`${style.active}`)
@@ -30,20 +28,19 @@ function Menu({itens, user}){
     
     }
 
-    // useEffect(()=>{
-    //     if(window.location.pathname == "/biblioteca"){
+     useEffect(()=>{
+        if(window.location.pathname == "/biblioteca"){
 
-    //         let list = document.querySelectorAll("li")
+            let list = document.querySelectorAll("li")
 
-    //         list.forEach(item => {
-    //         item.classList.remove(`${style.active}`)
-    //         setCurrent(`${style.active}`)
+            list.forEach(item => {
+            item.classList.remove(`${style.active}`)
+            setCurrent(`${style.active}`)
             
-    // });
+    });
 
-    //     }
-    // }, [])
-
+        }
+    }, [])
 
     const Navigate = useNavigate()
 

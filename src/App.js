@@ -29,8 +29,7 @@ function App() {
       <Router>
         <div className='App-container'>
       <Header itens={["Home", "Biblioteca" , "Login"]} user={user}></Header>
-      
-        
+              
           <Routes>
             <Route path='/*' element={<Container hash={hash}/>} />         
             <Route path='/biblioteca' element={<Biblioteca/>}/> 
@@ -40,11 +39,8 @@ function App() {
           </Routes>
 
         </div>
-      
+  
       </Router>
-    
-      
-
     </div>
   );
 }

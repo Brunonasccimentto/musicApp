@@ -49,7 +49,7 @@ export default function Formlogin(){
                                  
             </form>
 
-            <Link to={"/register"} className={style.sign}><span>Sign up for free ⇨ </span></Link>
+            <Link to={"/register"} className={style.sign}><span>inscreva-se ⇨ </span></Link>
             </div>
     )
 }
