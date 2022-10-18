@@ -30,22 +30,22 @@ export default function Formregister(){
             <Logo/>
             <h1> Cadastro </h1>
         <form action="/user/register" method="POST">
-                <div>
-                    <label>Nome:</label>
+                <label>
+                    <span>Nome:</span>
                     <input type="name" placeholder="name" onChange={(e)=>{setName(e.target.value)}} required/>
-                </div>
-                <div>
-                    <label>Email:</label>
+                </label>
+                <label>
+                    <span>Email:</span>
                     <input type="email" placeholder="email"  onChange={(e)=>{setEmail(e.target.value)}} required/>
-                </div>
-                <div>
-                    <label>Senha:</label>
+                </label>
+                <label>
+                    <span>Senha:</span>
                     <input type="password" placeholder="password"  onChange={(e)=>{setPassword(e.target.value)}} required/>
-                </div>
-                    <label className={style.invalid}>{invalid}</label>
-                <div>
+                </label>
+                    <span className={style.invalid}>{invalid}</span>
+                <label>
                     <button className={style.btnSign} onClick={submit} >Inscreva-se</button>
-                </div>
+                </label>
         </form>
         </div>
     )

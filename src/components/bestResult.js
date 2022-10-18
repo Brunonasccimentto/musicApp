@@ -77,7 +77,7 @@ export default function BestResult(props){
                    
                 </div>
 
-                    <audio controls src={props.preview} className={`${props.audioActive ? style.audioActive : ""}`}></audio>
+                    <audio controls src={props.preview}></audio>
                     <div className={style.likeBtns}>
                         <span onClick={likeMusic} style={{ display: "inline-block" }}> <BsHeart className={style.like} /> </span>
                         <span onClick={unLikeMusic} style={{ display: "none" }}> <BsHeartFill className={style.like}/> </span>

@@ -3,7 +3,7 @@ import style from "../styles/artist.module.css"
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FiPlayCircle, FiPauseCircle } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { addMusic, deleteMusic } from "../services/api";
+import {likeMusic, unLikeMusic} from "../components/functions"
 
 function Artist(){
 
@@ -57,48 +57,6 @@ function Artist(){
             item.classList.remove(`${style.active}`)
             e.currentTarget.classList.add(`${style.active}`)
          })
-    }
-
-    async function likeMusic(e){
-
-        let email = localStorage.getItem("user")
-        let music = e.target.parentElement.offsetParent.children[0].children[1].children[0].innerText
-
-        try {
-        const response = await addMusic(email, music)
-            alert("musica adicionado a sua biblioteca")
-        } catch(err){
-            alert(err.response.data)
-        }
-
-        let heart = e.target.parentElement.offsetParent.children[2].children[0]
-        let heartFill = e.target.parentElement.offsetParent.children[2].children[1]
-
-        if(heart.style.display == "inline-block"){
-            heart.style.display = "none"
-            heartFill.style.display = "inline-block"
-        }
-    }
-
-    async function unLikeMusic(e){
-
-        let email = localStorage.getItem("user")
-        let music = e.target.parentElement.parentElement.offsetParent.children[0].children[1].children[0].innerText
-
-        try{
-            const response = await deleteMusic(email, music)
-
-        } catch(err){
-            alert("musica deletada")
-        }
-
-        let heart = e.target.parentElement.parentElement.offsetParent.children[2].children[0]
-        let heartFill = e.target.parentElement.parentElement.offsetParent.children[2].children[1]
-
-        if(heart.style.display == "none"){
-            heart.style.display = "inline-block"
-            heartFill.style.display = "none"
-        }
     }
 
 
