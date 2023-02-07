@@ -1,0 +1,52 @@
+.home, .biblioteca, .login, .artist{
+    width: 100%;
+    height: 100vh;
+    background-color: #121212;
+    color: white;
+}
+
+.home{
+    background: url(./images/bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login{
+    background: url(./images/bg-login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.artist{
+    background: url(./images/bg-artist.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.biblioteca{
+    background:url(./images/bg-biblioteca.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+
+.App-container{
+    display: flex;
+    flex-direction: row;
+}

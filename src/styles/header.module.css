@@ -1,0 +1,189 @@
+
+/* tive que repetir as linhas de navigation e navigationOpen porque não sei como adicionar varias classes no react com module.css */
+
+ .header{
+    display: flex;
+    color: #fff;
+}
+
+.navigation{
+    height: 100vh;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    color: #693699;
+    background: linear-gradient(180deg, #8a2be2 0%, #693699 30%, #151f42 100%);
+    transition: 0.5s;
+}
+
+.open{
+    width: 300px;
+    color: #fff;
+    background: linear-gradient(300deg, #8a2be2 0%, #693699 30%, rgba(21,31,66,1) 100%);
+    transition: 0.5s;
+}
+
+.navigation .menuToggle{
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 60px;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 25px;
+    transition: 0.5s;
+}
+
+.open .menuToggle{
+    width: 270px;
+}
+
+.navigation .menuToggle::before{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background:rgb(51, 51, 51);
+    transform: translateY(-8px);
+    transition: 0.5s;
+}
+
+.navigation .menuToggle::after{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: rgb(51, 51, 51);
+    transform: translateY(8px);
+    transition: 0.5s;
+    box-shadow: 0 -8px 0 rgb(51, 51, 51)
+}
+
+.open .menuToggle::before{
+    transform:  translateY(0px) rotate(45deg);
+}
+
+.open .menuToggle::after{
+    transform:  translateY(0px) rotate(-45deg);
+    box-shadow: 0 0 0 rgb(51, 51, 51);
+}
+
+.navigation ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.navigation li{
+    list-style: none;
+    position: relative;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    transition: 0.5s;
+}
+
+.links{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: inherit;
+}
+
+.navigation ul li .links .icons{
+    width: 25px;
+    height: 25px;
+    line-height: 60px;
+    transition: 0.5s;
+    color: rgb(255, 255, 255);
+    font-size: 1.75em;
+    margin-left: -20px;
+}
+
+.navigation ul li .links .item{
+    display: none;
+}
+
+.open ul li .links .item{
+    display: block;
+}
+
+.open ul li .links .item{
+    margin-left: 15px;
+}
+
+.navigation  ul .active .links .icons{
+    color: #8a2be2;
+    box-shadow: 2px 2px 10px #693699;
+    filter: brightness(1.75);
+    background-color: rgb(26, 26, 26);
+    padding: 15px;
+    margin-top: -10px;
+    transform: translateX(30px);
+    border-radius: 10px;
+}
+
+.open ul .active .links .icons{
+    padding: 5px;
+    transform: scale(1.2);
+}
+
+.open ul .active .links{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px #8a2be2;
+}
+
+.logo{
+    display: none;
+}
+
+.open .menuToggle .logo{
+    width: 220px;
+    transition: 1s;
+    margin-left:20px;
+    display: block;
+}
+
+.drop{
+    position: relative;
+    display: inline-block;
+  }
+
+  .logOut{
+    display: none;
+  }
+
+  .drop .links:hover .logOut{
+    display: block;
+    color: #fff; 
+    background-color: #a31515; 
+    border-radius: 15px;
+    width: 100%;
+    padding: 7px;
+    font-size: 10.6px;
+  }
+
+  .drop .links{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logOut:hover{
+    display: block;
+    color: #fff;  
+    cursor: pointer;
+    border-radius: 15px;
+    transform: translateX(20px);
+    transition: 0.5s;
+  }
+
+
+
+ 
+

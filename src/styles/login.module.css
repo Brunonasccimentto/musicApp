@@ -1,0 +1,165 @@
+
+.container{
+    display: flex;
+    background-color: rgba(22, 22, 22, 0.616);
+    backdrop-filter: blur(20px) saturate(300%);
+    -webkit-backdrop-filter: blur(7px) saturate(200%);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 20px;
+    -webkit-animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; 
+}
+
+.container form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container div{
+    margin-top: 15px;
+}
+
+.container input{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.sign{
+    color: white;
+    font-size: 14px;
+    font-weight: bolder;
+    
+}
+
+@-webkit-keyframes slide-in-elliptic-top-fwd {
+    0% {
+      -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
+              transform: translateY(-600px) rotateX(-30deg) scale(0);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0) rotateX(0) scale(1);
+              transform: translateY(0) rotateX(0) scale(1);
+      -webkit-transform-origin: 50% 1400px;
+              transform-origin: 50% 1400px;
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-elliptic-top-fwd {
+    0% {
+      -webkit-transform: translateY(-600px) rotateX(-30deg) scale(0);
+              transform: translateY(-600px) rotateX(-30deg) scale(0);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0) rotateX(0) scale(1);
+              transform: translateY(0) rotateX(0) scale(1);
+      -webkit-transform-origin: 50% 1400px;
+              transform-origin: 50% 1400px;
+      opacity: 1;
+    }
+  }
+
+.container .sign:hover{
+    -webkit-animation: shake-horizontal 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: shake-horizontal 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-10px);
+              transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+    80% {
+      -webkit-transform: translateX(8px);
+              transform: translateX(8px);
+    }
+    90% {
+      -webkit-transform: translateX(-8px);
+              transform: translateX(-8px);
+    }
+  }
+  @keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-10px);
+              transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+    80% {
+      -webkit-transform: translateX(8px);
+              transform: translateX(8px);
+    }
+    90% {
+      -webkit-transform: translateX(-8px);
+              transform: translateX(-8px);
+    }
+  }
+  
+
+button{
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 103%;
+    background-color:  #294091;
+    color: #fff;
+    line-height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.356);
+}
+
+button:hover{
+    background-color: #243679;
+}
+
+.btnSign{
+    background-color: rgb(0, 151, 0);
+    border: 1px solid rgba(255, 255, 255, 0.356);
+}
+
+.btnSign:hover{
+    background-color: green;
+}
+
+.logo{
+    width: 200px;
+    margin-left: 20px;
+}
+
+.invalid{
+  margin: auto;
+  margin-top: 10px;
+}
